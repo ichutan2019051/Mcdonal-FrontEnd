@@ -1,0 +1,23 @@
+<body>
+
+
+
+
+    <div class="container">
+         
+        <form>
+            
+              <label class="form-label">Nombre de usuario</label>
+              <input type="email" class="form-control" placeholder="Nombre de usuario" name="name" #name="ngModel" [(ngModel)]="ModeloUser.name">
+
+
+              <label class="form-label">Contraseña</label>
+              <input type="password" class="form-control" placeholder="Contraseña" name="password" #password="ngModel" [(ngModel)]="ModeloUser.password">
+            <button type="submit" class="btn btn-primary" (click)="login()">Inciar sesión</button>
+          </form>
+        
+    </div>
+
+
+
+</body>

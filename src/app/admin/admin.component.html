@@ -1,0 +1,98 @@
+   <body>
+     <app-logout></app-logout>
+<div class="admin">
+
+  <div class="titulos text-center">
+    <h4>Administración</h4>
+    <p class="text-sm-muted">La libertad de poder administrar siempre.</p>
+  </div>
+
+    <div class="container-empresa">
+       <div class="table">
+           <h1>Control Empresas</h1>
+           <button type="button" class="add" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAgregarEmpresa">   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+          </svg></button>
+          
+           <div class="overflow-auto">
+            <table  class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nomre</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor ="let datosempresas of datosempresas">
+                    <td>{{datosempresas.name}}</td>
+                    <td>{{datosempresas.rol}}</td>
+                    <td>
+                      <div class="btn-group" rol="group" aria-label="Basic mixed styles example">
+                        <button type="button" (click)="datecaputre(datosempresas._id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Eliminar</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+           </div>
+       </div> 
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAgregarEmpresa" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Agregar Empresas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text"
+        placeholder="Ingrese el nombre de la empresa" name="name" #name="ngModel" [(ngModel)]="ModeloUser.name"
+        class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" placeholder="Ingrese su contraseña"
+        name="password" #password="ngModel" [(ngModel)]="ModeloUser.password">
+      </div>
+
+      <button type="submit" class="btn btn-primary" data-bs-dismiss="offcanvas" aria-label="Close" (click)="saveEmpresa()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-control" placeholder="Ingrese su contraseña"
+          name="password" #password="ngModel" [(ngModel)]="ModeloUser.password">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" (click)="removeEmpresa()" data-bs-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
