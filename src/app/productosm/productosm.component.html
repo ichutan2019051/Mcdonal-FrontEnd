@@ -1,0 +1,137 @@
+<body>
+    <app-logout></app-logout>
+    <div class="admin">
+    
+      <div class="titulos text-center">
+        <h4>Administración</h4>
+        <p class="text-sm-muted">La libertad de poder administrar siempre.</p>
+      </div>
+    
+        <div class="container-empresa">
+           <div class="table">
+               <h1>Control Productos</h1>
+               <button type="button" class="add" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAgregarProductos">   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                    </svg>
+                </button>
+                
+               <div class="overflow-auto">
+                <table  class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nomre</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Enviar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let datos of datos">
+                        <td>{{datos.name}}</td>
+                        <td>{{datos.proveedor}}</td>
+                        <td>{{datos.stock}}</td>
+                        <td>
+                            <button type="button" class="add" (click)="Send(datos.name)"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAVtJREFUSEu9lQFNA0EQRV8VgAPAQVEADsABOKAOAAWAA3AADkAB1AE4AAfkkZ1ms9m92164TtKkuez9P///mb0FM9diZnx2TvAB7AE3wNN/qCsVfCcCsT+BR+AB8PmkKgmegTPgJyMS/H4qUUmwAu6SPXavVSepdYls4Dap61JUEiyB9wRwlBBOAYlVFiV5F1FtiiIHCcwh6jApusieqciMXltyagSRgy/ZZflyEJ1nObXOVvcgcoimWi/vJ+s872hbjrkDsRnxmoLIoVQ9RnQJHGREx/7fhuAtZVBappIrQALts9aAjXZZNAasRZIEsBY5ZX81FHIL2C6vAUMO4NbZKsHQmAqsFVEvKdTuMY2AvzI/XTQ9tuMop8Qtz/ekugpjV4UdS2B5P7kjXcCtDGLJtCn8Fdjg/G19qw5d19rkNEwCbilwE+1cGzajVjW38+HOP5mdffUfm13BL3LqWBmPM/D+AAAAAElFTkSuQmCC"/>
+                            </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+               </div>
+           </div> 
+        </div>
+    </div>
+</body>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAgregarProductos" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel">Agregar Productos</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text"
+              placeholder="Ingrese el nombre del prducto" 
+              name="name" #name="ngModel" [(ngModel)]="modeloproducto.name" 
+              class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Proveedor</label>
+                <input type="text"
+                placeholder="Ingrese el nombre del proveedor"
+                name="proveedor" #proveedor="ngModel" [(ngModel)]="modeloproducto.proveedor" 
+                class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Stock</label>
+                <input type="Number"
+                placeholder="0" 
+                name="stock" #stock="ngModel" [(ngModel)]="modeloproducto.stock"
+                class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary" (click)="setProducto()" data-bs-dismiss="offcanvas">Agregar</button>
+         
+        </form>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-body" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enviar A:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let de of datosempresas">
+                    <td>{{de.name}}</td>
+                    <td>
+                        <button type="button" class="add" (click)="setAsignarProducto(de._id)" data-bs-dismiss="modal">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAVtJREFUSEu9lQFNA0EQRV8VgAPAQVEADsABOKAOAAWAA3AADkAB1AE4AAfkkZ1ms9m92164TtKkuez9P///mb0FM9diZnx2TvAB7AE3wNN/qCsVfCcCsT+BR+AB8PmkKgmegTPgJyMS/H4qUUmwAu6SPXavVSepdYls4Dap61JUEiyB9wRwlBBOAYlVFiV5F1FtiiIHCcwh6jApusieqciMXltyagSRgy/ZZflyEJ1nObXOVvcgcoimWi/vJ+s872hbjrkDsRnxmoLIoVQ9RnQJHGREx/7fhuAtZVBappIrQALts9aAjXZZNAasRZIEsBY5ZX81FHIL2C6vAUMO4NbZKsHQmAqsFVEvKdTuMY2AvzI/XTQ9tuMop8Qtz/ekugpjV4UdS2B5P7kjXcCtDGLJtCn8Fdjg/G19qw5d19rkNEwCbilwE+1cGzajVjW38+HOP5mdffUfm13BL3LqWBmPM/D+AAAAAElFTkSuQmCC"/>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cantidad que va a enviar:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="Number"
+            placeholder="0" 
+            name="cantidad" #cantidad="ngModel" [(ngModel)]="modeloproducto.cantidad"
+            class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modal-body">Enviar a:</button>
+        </div>
+      </div>
+    </div>
+  </div>

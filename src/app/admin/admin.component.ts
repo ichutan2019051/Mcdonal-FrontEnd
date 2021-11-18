@@ -4,6 +4,7 @@ import { userServicios } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { Router  } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -19,13 +20,18 @@ export class AdminComponent implements OnInit {
  // busqueda = {search: ""} 
 
   constructor(
-    public _userServicios: userServicios
+    public _userServicios: userServicios,
+    private _router: Router
   ) { 
     this.ModeloUser = new user("","","","","")
   }
 
   ngOnInit(): void {
     this.getEmpresas()
+  }
+
+  productos(){
+    this._router.navigate(['/productosm'])
   }
 
   getEmpresas(){

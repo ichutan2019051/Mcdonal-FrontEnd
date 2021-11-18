@@ -19,10 +19,9 @@ export class productoServicios{
         this.url = serviciosglobales.url
     }
 
-   
-    sendProductos(datos: any):Observable<any>{
+    sendProductos(datos: any): Observable<any>{
         let params = JSON.stringify(datos)
-        return this._http.put(this.url+"sendProductos", datos, {headers: this.encabezadocontoken})
+        return this._http.put(this.url+"sendProductos", params, {headers: this.encabezadocontoken})
     }
 
     setProducto(datos: productos): Observable<any>{
@@ -30,21 +29,10 @@ export class productoServicios{
         return this._http.post(this.url+"setProducto", params, {headers: this.encabezadocontoken})
     }
 
-    store(datos: any, id: any):Observable<any>{
+    setAsignarProducto(datos: productos, id: any): Observable<any>{
         let params = JSON.stringify(datos)
-        return this._http.put(this.url+"store/"+id, params, {headers: this.encabezadocontoken})
+        return this._http.put(this.url+"setAsignarProducto/"+id, params, {headers: this.encabezadocontoken})
     }
-
-
-   searchP(datos: any):Observable<any>{
-    let params = JSON.stringify(datos)
-    return this._http.post(this.url+"searchP", params, {headers: this.encabezadocontoken})
-}
-
-searchPS(datos: any): Observable<any>{
-    let params = JSON.stringify(datos)
-    return this._http.post(this.url+"searchPS", params, {headers: this.encabezadocontoken})
-}
 
     getToken(){
         var token2 = localStorage.getItem('token');

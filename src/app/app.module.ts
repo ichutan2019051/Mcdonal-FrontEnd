@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProductosmComponent } from './productosm/productosm.component';
 
 
 
@@ -22,7 +23,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AdminComponent,
     LogoutComponent,
     EmpleadosComponent,
-    NavbarComponent, 
+    NavbarComponent,
+    ProductosmComponent, 
   ],
   imports: [
     BrowserModule,
