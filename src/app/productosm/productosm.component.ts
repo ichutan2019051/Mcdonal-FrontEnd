@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { productos } from '../models/productos.models';
 import { productoServicios } from '../services/productos.service';
 import { userServicios } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productosm',
@@ -19,7 +20,8 @@ export class ProductosmComponent implements OnInit {
 
   constructor(
     public _userServicios: userServicios,
-    public _productoServicios: productoServicios
+    public _productoServicios: productoServicios,
+    private _router: Router
   ) {
     this.modeloproducto = new productos("","","",0,0,"")
    }
@@ -28,6 +30,11 @@ export class ProductosmComponent implements OnInit {
     this.orden.orden = "SotckAsc"
     this.sendProductos()
     this.getEmpresas()
+  }
+
+  serrarsecion(){
+    window.localStorage.clear()
+    this._router.navigate(['/admin'])
   }
 
   sendProductos(){

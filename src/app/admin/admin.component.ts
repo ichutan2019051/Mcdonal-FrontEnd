@@ -6,6 +6,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { Router  } from '@angular/router';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -14,10 +15,12 @@ import { Router  } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
  
-
+  rol: any;
   datosempresas: any;
   ModeloUser: user;
- // busqueda = {search: ""} 
+  namecompay: any;
+  bloqueobotones: any;
+  datosempleados: any;
 
   constructor(
     public _userServicios: userServicios,
@@ -29,6 +32,8 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.getEmpresas()
   }
+
+
 
   productos(){
     this._router.navigate(['/productosm'])
@@ -77,11 +82,7 @@ export class AdminComponent implements OnInit {
   }
   
 
-  Imprimir(){
-    const doc = new jsPDF();
-    autoTable(doc, { html: '#container-empresa' })
-    doc.save("Detalles de empresas "+".pdf")
-  }
+  
 
   removeEmpresa(){
     this._userServicios.removeEmpresa(this.ModeloUser._id, this.ModeloUser).subscribe(
@@ -105,7 +106,11 @@ export class AdminComponent implements OnInit {
     )
   }
 
-
+  Imprimir(){
+    const doc = new jsPDF();
+    autoTable(doc, { html: '#table-sucursales' })
+    doc.save("Tabla De sucursales "+".pdf")
+  }
   
 }
 
