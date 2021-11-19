@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   }
 
   productos(){
-    this._router.navigate(['/productos'])
+    this._router.navigate(['/ventas'])
   }
   empleados(){
     this._router.navigate(['/empleados'])

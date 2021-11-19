@@ -13,6 +13,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductosmComponent } from './productosm/productosm.component';
+import { ProductossComponent } from './productoss/productoss.component';
 
 
 
@@ -24,7 +25,8 @@ import { ProductosmComponent } from './productosm/productosm.component';
     LogoutComponent,
     EmpleadosComponent,
     NavbarComponent,
-    ProductosmComponent, 
+    ProductosmComponent,
+    ProductossComponent, 
   ],
   imports: [
     BrowserModule,

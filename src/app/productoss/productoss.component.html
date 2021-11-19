@@ -1,0 +1,76 @@
+<body>
+    <app-logout></app-logout>
+    <app-navbar></app-navbar>
+    
+        <div class="titulos text-center">
+        <h4>Admin de  {{namecompay}}</h4>
+        <p class="text-sm-muted">BIENVENIDO.</p>
+        </div>
+        
+        <div class="container-empresa">
+    
+            <div class="tabla">
+                <br>
+                 <div class="acciones">
+                  <div class="search">
+                    <input type="text" placeholder="Busqueda" class="buscadorinput">
+                    <button type="button" class="add1" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg></button>
+                  </div>
+                  <button type="button" class="btn btn-warning">
+                    <i class='bx bxs-file-pdf bx-sm'></i>Imprimir</button>
+                 </div>
+                <div class="overflow-auto">
+                  <table class="table"  id="table-empleados">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let d of datos">
+                        <td>{{d.name}}</td>
+                        <td>{{d.proveedor}}</td>
+                        <td>{{d.stock}}</td>
+                        <td>{{d.cantidad}}</td>
+                        <td><button (click)="send(d._id)" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPFJREFUSEvdlO0NAUEQhp+rgBKoAB3oQFRAAQQd6ADhPzrQgejgVIAKUAGZ5E7WZff24+4SMT83O++z887sRFQcUcX6/BfgVaJdMdARPdWiMgE3oJEFpAUsgUnBamaA6GibLORLAcAzef3DBJBz8bAVCNkDwzTXNKZTYBEIaAJXG6AO3AMAJ6Cr5uV9tAPQ84T0Acn7RB5AfNx6AM5AO3vftipkEmrAl68eUOsu2gEDYAVI473DVoE07OioqtWyAUR7nrxerMqLYIBjAfprLhVI5hoYARtgrEiZzp3GVH2SumlNG7iQRZVXENwH1x78LuANIF4jGfj7yWIAAAAASUVORK5CYII="/></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <br>
+             </div> 
+    
+        </div>
+    
+      
+        
+    </body>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <input type="Number"
+                    placeholder="0" 
+                    name="cantidad" #cantidad="ngModel" [(ngModel)]="modeloproducto.cantidad"
+                    class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" (click)="store()" class="btn btn-primary" data-bs-dismiss="modal">Vender</button>
+            </div>
+          </div>
+        </div>
+      </div>

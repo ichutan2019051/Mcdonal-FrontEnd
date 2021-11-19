@@ -5,6 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
 import { EmpleadosComponent} from './empleados/empleados.component';
 import { ProductosmComponent } from './productosm/productosm.component';
+import { ProductossComponent } from './productoss/productoss.component';
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "logout", component: LogoutComponent},
   {path: "empleados", component: EmpleadosComponent},
   {path: "productosm", component: ProductosmComponent},
+  {path: "ventas", component: ProductossComponent},
   {path: "**", component: LoginComponent}
   
 ];

@@ -34,6 +34,11 @@ export class productoServicios{
         return this._http.put(this.url+"setAsignarProducto/"+id, params, {headers: this.encabezadocontoken})
     }
 
+    store(datos: productos, id: any): Observable<any> {
+        let params = JSON.stringify(datos);
+        return this._http.put(this.url+"store/"+id, params, {headers: this.encabezadocontoken})
+    }
+
     getToken(){
         var token2 = localStorage.getItem('token');
         if(token2 != 'undefined'){
