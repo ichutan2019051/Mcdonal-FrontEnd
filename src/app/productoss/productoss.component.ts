@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { productos } from '../models/productos.models';
 import { productoServicios } from '../services/productos.service';
 import { userServicios } from '../services/user.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-productoss',
@@ -64,5 +66,11 @@ export class ProductossComponent implements OnInit {
           })
       }
     )
+  }
+  
+  Imprimir(){
+    const doc = new jsPDF();
+    autoTable(doc, { html: '#tabla-productos' })
+    doc.save("Tabla De sucursales "+".pdf")
   }
 }
