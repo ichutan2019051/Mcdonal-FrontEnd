@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         if(res.user.rol == "ADMIN"){
           this._router.navigate(['/admin'])
         }else{
-          this._router.navigate(['/empleados'])
+          this._router.navigate(['/ventas'])
         }
         Swal.fire({
           position: 'center',

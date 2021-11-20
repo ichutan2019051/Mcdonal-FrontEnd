@@ -10,8 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { LogoutComponent } from './logout/logout.component';
-import { EmpleadosComponent } from './empleados/empleados.component';
-import { NavbarComponent } from './navbar/navbar.component';
+
 import { ProductosmComponent } from './productosm/productosm.component';
 import { ProductossComponent } from './productoss/productoss.component';
 
@@ -23,8 +22,6 @@ import { ProductossComponent } from './productoss/productoss.component';
     LoginComponent,
     AdminComponent,
     LogoutComponent,
-    EmpleadosComponent,
-    NavbarComponent,
     ProductosmComponent,
     ProductossComponent, 
   ],
